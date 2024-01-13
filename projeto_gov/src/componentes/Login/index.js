@@ -35,7 +35,7 @@ function Login({ navigation }) {
       // aqui de novo vou dar um response pra enviar minha informação
       const response = await axios.post(`${API_URL}api/signin`, data);
 
-      if(response.status === 200){
+      if(response){
         // o usuario e criado e captura o token pra sempre entrar direto
 
         await AsyncStorage.setItem('token', response.data.token);
@@ -43,7 +43,7 @@ function Login({ navigation }) {
       }
     } catch (error) {
       // se nao for ele captura o erro 
-      if (error.response.status === 400) {
+      if (error) {
         Alert.alert('Erro', error.response.data.msg);
       } 
     }

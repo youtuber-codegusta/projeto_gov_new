@@ -8,7 +8,7 @@ const Details = ({navigation}) => {
 
  return (
     <View>
-      <Text>ID: {user._id}</Text>
+      <Text>ID: {user.id}</Text>
       <Text>Nome: {user.name}</Text>
       <Text>Idade: {user.age}</Text>
       <Text>genero: {user.gender}</Text>

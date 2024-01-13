@@ -1,8 +1,10 @@
 const User = require("./models/user");
+const sequelize = require("./config/db");
 const bcryptjs = require("bcryptjs");
 
 const initializeApp = async () => {
     try {
+        await sequelize.sync({ force: true });
         // Verifique se o usuário padrão já existe
         const existingUser = await User.findOne({ where: { email: 'admin@example.com' } });
   
@@ -14,7 +16,8 @@ const initializeApp = async () => {
                 email: 'administrador@gov.com',
                 password: hashedPassword,
                 age: "20",
-                rg:  "000.000.000.00"
+                rg:  "000.000.000.00",
+                "type": "admin"
                 // outros campos necessários
             });
         }catch (error) {

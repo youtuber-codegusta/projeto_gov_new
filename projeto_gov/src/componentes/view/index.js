@@ -15,19 +15,19 @@ const fetchData = async () => {
 };
 
 const UserComponent = ({ user, handleAccept, handleDeny, navigateToDetails }) => {
-  const { _id, name, status } = user;
+  const { id, name, status } = user;
 
   return (
-    <View key={_id} style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc', flexDirection: "row", justifyContent: 'space-between' }}>
+    <View key={id} style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc', flexDirection: "row", justifyContent: 'space-between' }}>
       <TouchableOpacity onPress={() => navigateToDetails(user)}>
-        <Text>ID: {_id}</Text>
+        <Text>ID: {id}</Text>
         <Text>Nome: {name}</Text>
       </TouchableOpacity>
 
       {status === "pendente" ? (
         <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-        <Button title="Aceitar" color="green" onPress={() => handleAccept(_id)} />
-        <Button title="Negar" color="orange" onPress={() => handleDeny(_id)} />
+        <Button title="Aceitar" color="green" onPress={() => handleAccept(id)} />
+        <Button title="Negar" color="orange" onPress={() => handleDeny(id)} />
       </View>
       ) : (
         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -99,7 +99,7 @@ const ViewAdmin = ({navigation}) => {
       <View>
         {users.map(user => (
           <UserComponent 
-            key={user._id} 
+            key={user.id} 
             user={user} 
             handleAccept={handleAccept} 
             handleDeny={handleDeny} 
